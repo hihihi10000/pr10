@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp25
+{
+    class Book
+    {
+        private string title;
+        private int pages;
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        public int Pages
+        {
+            get { return pages; }
+            set
+            {
+                if (value < 1 || value > 5000)
+                {
+                    Console.WriteLine("Страниц должно быть от 1 до 5000!");
+                }
+                else
+                {
+                    pages = value;
+                }
+            }
+        }
+        public Book(string title, int pages)
+        {
+            Title = title;
+            Pages = pages;
+        }
+
+        public Book(string title) : this(title, 111)
+        {
+        }
+        public Book() : this("Евгений Онегин", 1)
+        {
+        }
+        public void Read()
+        {
+            Console.WriteLine($"Читаю книгу \"{Title}\", страниц: {Pages}.");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+          
+            Book book1 = new Book("Война и мир", 1225);
+            Book book2 = new Book("Преступление и наказание");
+            Book book3 = new Book();
+
+           
+            book1.Read();
+            book2.Read();
+            book3.Read();
+
+            Book book4 = new Book("Ревизор", -5);
+            book4.Read();
+
+            Book book5 = new Book("Мёртвые души", 6000);
+            book5.Read();
+
+            book3.Title = "Горе от ума";
+            book3.Pages = 200;
+            book3.Read();
+
+            Console.ReadLine();
+        }
+    }
+}
