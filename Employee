@@ -4,6 +4,7 @@ public class Employee
 {
     private string name;
     private decimal salary;
+
     public string Name
     {
         get { return name; }
@@ -12,35 +13,43 @@ public class Employee
 
     public decimal Salary
     {
-        get
-        {
-            return salary;
-        }
+        get { return salary; }
         set
         {
             if (value >= 0 && value <= 1000000)
+            {
                 salary = value;
+            }
             else
-                Console.WriteLine("Зарплата должна быть от 0 до 1 000 000!");
+            {
+                Console.WriteLine("Зарплата не может быть отрицательной!");
+            }
         }
     }
+
     public Employee(string name, decimal salary)
     {
         Name = name;
         Salary = salary;
     }
-    public Employee(string name) : this(name, 60000) { }
+
+    public Employee(string name) : this(name, 50000)
+    {
+    }
+
     public void Work()
     {
-        Console.WriteLine($"{Name} работает, зарплата: {Salary}");
+        Console.WriteLine($"{Name} работает, зарплата: {Salary}.");
     }
 
     static void Main()
     {
-        Employee employee1 = new Employee("Иван", 70000);
+        Employee employee1 = new Employee("Иван", 80000);
         Employee employee2 = new Employee("Анна");
+        
         employee1.Work();
         employee2.Work();
+        
         employee1.Salary = -1000;
     }
 }
